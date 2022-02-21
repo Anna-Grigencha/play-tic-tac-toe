@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic-tac-toe</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="p1">
+          Player 1:
+          <span class="player1">0</span>
+        </div>
+        <h1 class="title">Tic-Tac-Toe</h1>
+        <div class="p2">
+          Player 2:
+          <span class="player2">0</span>
+        </div>
+      </div>
+      <div class="area">
+        <div class="box" data-ceil="1"></div>
+        <div class="box" data-ceil="2"></div>
+        <div class="box" data-ceil="3"></div>
+        <div class="box" data-ceil="4"></div>
+        <div class="box" data-ceil="5"></div>
+        <div class="box" data-ceil="6"></div>
+        <div class="box" data-ceil="7"></div>
+        <div class="box" data-ceil="8"></div>
+        <div class="box" data-ceil="9"></div>
+      </div>
+      <div class="wrapper">
+        <button class="reset">Очистить</button>
+      </div>
+
+      <div class="modal-result-wrapper">
+        <div class="overlay">
+          <div class="modal-window">
+            <div class="content">
+              <div class="winner"></div>
+              <div class="step-count"></div>
+            </div>
+            <div class="btm-close">Start New Game</div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="footer">
+          <div class="github-link">
+            <a href="https://github.com/Anna-Grigencha"
+              >GitHub Anna-Grigencha</a
+            >
+          </div>
+
+          <div class="year-footer"><p>2022</p></div>
+          <div class="rs-school-link">
+            <a href="https://rs.school/js/">Курс «JavaScript/Front-end»</a>
+            <img
+              src="https://rs.school/images/rs_school_js.svg"
+              alt="The logo"
+              width="60"
+              height="22"
+            />
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="index.js"></script>
+    <script src="score.js"></script>
+  </body>
+</html>
