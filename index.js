@@ -1,10 +1,12 @@
 const area = document.querySelector(".area");
-let move = 0; //ход
+let stepCount = 0; //ход
 let result = "";
 let player1 = 0;
 let player2 = 0;
 const boxis = document.getElementsByClassName("box"); //коллекция
 const contentWrapper = document.querySelector(".content");
+const winnerWrapper = document.querySelector(".winner");
+const stepCountWrapper = document.querySelector(".step-count");
 const playerScore1 = document.querySelector(".player1");
 const playerScore2 = document.querySelector(".player2");
 const modalResilt = document.querySelector(".modal-result-wrapper");
@@ -14,14 +16,17 @@ const reset = document.querySelector(".reset");
 
 area.addEventListener("click", (e) => {
   if ((e.target.classNamen = "box")) {
-    if (move % 2 === 0) {
+    if (stepCount % 2 === 0 && !this.textContent) {
       e.target.innerHTML = "X";
-      // e.target.innerHTML.style.color = #ffffff;
-    } else if (move % 2 !== 0) {
+    } else if (stepCount % 2 !== 0) {
       e.target.innerHTML = "O";
     }
-    move++;
+    stepCount++;
     check();
+  }
+  if (stepCount === 9) {
+    result = "Ничья!";
+    prepareNoWinner(result);
   }
 });
 
@@ -46,6 +51,7 @@ const check = () => {
       player1++;
       prepareResult(result);
       resultPlayer1(player1);
+      soundClick();
     } else if (
       boxis[arr[i][0]].innerHTML === "O" &&
       boxis[arr[i][1]].innerHTML === "O" &&
@@ -55,12 +61,20 @@ const check = () => {
       player2++;
       prepareResult(result);
       resultPlayer2(player2);
+      soundClick();
     }
   }
 };
 
 const prepareResult = (winner) => {
-  contentWrapper.innerHTML = `Победили ${winner} !`;
+  winnerWrapper.innerHTML = `Победили ${winner} !`;
+  stepCountWrapper.innerHTML = `Количество ходов: ${stepCount}`;
+  modalResilt.style.display = "block";
+};
+
+const prepareNoWinner = (message) => {
+  winnerWrapper.innerHTML = message;
+  stepCountWrapper.innerHTML = `Количество ходов: ${stepCount}`;
   modalResilt.style.display = "block";
 };
 
@@ -77,6 +91,12 @@ const closeModal = () => {
   //  location.reload(); //перезагрузка страницы
 };
 
+function soundClick() {
+  var audio = new Audio(); // Создаём новый элемент Audio
+  audio.src = "./music/victory.mp3"; // Указываем путь к звуку
+  audio.autoplay = true; // Автоматически запускаем
+}
+
 const clear = () => {
   const board = [
     [0, 1, 2],
@@ -84,9 +104,9 @@ const clear = () => {
     [6, 7, 8],
   ];
   for (i = 0; i < 3; i++) {
-    boxis[board[i][0]].innerHTML = " ";
-    boxis[board[i][1]].innerHTML = " ";
-    boxis[board[i][2]].innerHTML = " ";
+    boxis[board[i][0]].innerHTML = "";
+    boxis[board[i][1]].innerHTML = "";
+    boxis[board[i][2]].innerHTML = "";
   }
 };
 
@@ -94,21 +114,19 @@ btnClose.addEventListener("click", (e) => {
   if ((e.target.classNamen = "box")) {
     closeModal();
     clear();
-    move = 0;
+    stepCount = 0;
   }
 });
 
 overlay.addEventListener("click", (e) => {
   if ((e.target.classNamen = "box")) {
     closeModal();
-    clear();
-    move = 0;
   }
 });
 
 reset.addEventListener("click", (e) => {
-  clear();
-  move = 0;
+  if ((e.target.classNamen = "box")) {
+    clear();
+    stepCount = 0;
+  }
 });
-
-//reset.addEventListener("click", clear);
