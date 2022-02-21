@@ -33,10 +33,15 @@ body {
   border: 1px solid gray;
   box-sizing: border-box;
   font-size: 40px;
-  color: brown;
+  color: tomato;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+.box:hover {
+  background-color: #ccc;
 }
 
 .modal-result-wrapper {
@@ -53,6 +58,7 @@ body {
   width: 300px;
   height: 260px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -94,23 +100,15 @@ body {
   justify-content: center;
 }
 
-.x {
-  color: tomato;
-}
-
-.o {
-  color: #33dbff;
-}
-
 .p1 {
   color: tomato;
-  margin-left: 40px;
+  margin-left: 100px;
   font-size: 20px;
 }
 
 .p2 {
   color: #33dbff;
-  margin-right: 40px;
+  margin-right: 100px;
   font-size: 20px;
 }
 
@@ -152,4 +150,42 @@ body {
   font-family: "arial";
   font-size: 70px;
   position: absolute;
+}
+
+.step-count {
+  padding-top: 50px;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline; /*элементы на одном уровне*/
+  padding-left: 100px;
+  padding-right: 100px;
+  color: #33dbff;
+}
+
+.github-link {
+  width: 33%;
+  text-align: left;
+}
+
+.rs-school-link {
+  width: 33%;
+  text-align: right;
+}
+
+.year-footer {
+  width: 33%;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: #33dbff;
+}
+
+a:hover {
+  color: tomato;
 }
